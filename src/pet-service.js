@@ -1,17 +1,17 @@
-import config from './config'
+import config from './config';
 
 const PetApiService = {
+  getCat() {
+    return fetch(`${config.API_ENDPOINT}/cat`)
+      .then(res =>
+        !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+      )
+      .then(res => {
+        return res;
+      });
+  },
 
-    getCat() {
-      return fetch(`${config.API_ENDPOINT}/cat`)
-        .then(res =>
-           (!res.ok)
-            ? res.json().then(e => Promise.reject(e))
-            : res.json()
-        )
-    },
-
-    adoptCat(){
+  /*adoptCat(){
         return fetch(`${config.API_ENDPOINT}/cat`, {
           method: 'DELETE'
         })
@@ -20,18 +20,15 @@ const PetApiService = {
             throw new Error(res.status);
           })
           .catch(error => console.error({error}))
-      },
+      },*/
 
-    getDog() {
-        return fetch(`${config.API_ENDPOINT}/dog`)
-          .then(res =>
-             (!res.ok)
-              ? res.json().then(e => Promise.reject(e))
-              : res.json()
-          )
-      },
+  getDog() {
+    return fetch(`${config.API_ENDPOINT}/dog`).then(res =>
+      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    );
+  }
 
-      adoptDog(){
+  /*adoptDog(){
         return fetch(`${config.API_ENDPOINT}/dog`, {
           method: 'DELETE'
         })
@@ -40,7 +37,7 @@ const PetApiService = {
             throw new Error(res.status);
           })
           .catch(error => console.error({error}))
-      }
-}
+      }*/
+};
 
 export default PetApiService;

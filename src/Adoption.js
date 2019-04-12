@@ -1,45 +1,63 @@
-import React, { Component } from "react";
-import PetListContext from "./PetListContext";
+import React, { useState, useEffect } from 'react';
+//import PetListContext from './PetListContext';
 import PetApiService from './pet-service';
 
-export default class Adoption extends Component {
-  static contextType = PetListContext;
-  
-  componentDidMount() {
-    this.context.clearError()
-    PetApiService.getCat()
-      .then(this.context.setCatList)
-      .catch(this.context.setError)
-    PetApiService.getDog()
-      .then(this.context.setDogList)
-      .catch(this.context.setError)
+export default function Adoption(props) {
+  // const petListContext = React.useContext(PetListContext);
+  const [error, setError] = useState(null);
+  const [catList, setCatList] = useState(null);
+  const [dogList, setDogList] = useState(null);
+  const [nextCat, setNextCat] = useState(null);
 
-  }
-  render() {
-    const { catList, dogList } = this.context
-    return (
+  useEffect(() => {
+    debugger;
+    PetApiService.getCat()
+      .then(res => {
+        setCatList(res.cats);
+        setNextCat(res.cats[0]);
+        debugger;
+        console.log(res.cats[0]);
+      })
+      .catch(setError);
+    /*PetApiService.getDog()
+      .then(this.context.setDogList)
+      .catch(this.context.setError);*/
+  }, []);
+
+  return (
     <div>
-        {/* <div className="cat container"> */}
-            {/* <h2>{catList.name}</h2>
-            <div className="cat-box">
-                <img src={catList.image} className="cat image" alt="a close shot of the cat" />
-                <p>{catList.description}</p>
-            </div>
-            <div className="button-box">
-                <button type="button" onClick={this.handleClickAdoptButton}>Adopt Me!</button>
-            </div>      
+      {nextCat !== null && (
+        <div className="cat container">
+          <h2>{nextCat.name}</h2>
+          <div className="cat-box">
+            <img
+              src={nextCat.imageurl}
+              className="cat image"
+              alt="a close shot of the cat"
+            />
+            <p>{nextCat.imagedescription}</p>
+          </div>
+          <div className="button-box">
+            <button type="button">Adopt Me!</button>
+          </div>
         </div>
-        <div className="dog container">
-            <h2>{dogList.name}</h2>
-            <div className="dog-box">
-                <img src={dogList.image} className="cat-owner logo" alt="a close shot of the dog" />
-                <p>{dogList.description}</p>
-            </div>
-            <div className="button-box">
-                <button type="button" onClick={this.handleClickAdoptButton}>Adopt Me!</button>
-            </div>      
-        </div>  */}
+      )}
+      {/*<div className="dog container">
+        <h2>{dogList.name}</h2>
+        <div className="dog-box">
+          <img
+            src={dogList.image}
+            className="cat-owner logo"
+            alt="a close shot of the dog"
+          />
+          <p>{dogList.description}</p>
+        </div>
+        <div className="button-box">
+          <button type="button" onClick={this.handleClickAdoptButton}>
+            Adopt Me!
+          </button>
+        </div>
+  </div>*/}
     </div>
-    )  
-  }
+  );
 }
