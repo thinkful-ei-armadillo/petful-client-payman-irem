@@ -21,6 +21,7 @@ export default function Adoption(props) {
           .catch(setError);
       })
       .catch(setError);
+
     PetApiService.getDog()
       .then(res => {
         setDogList(res);
@@ -53,6 +54,15 @@ export default function Adoption(props) {
           </div>
         )}
       </div>
+      <div className="other cats">
+      {catList !== null &&
+          catList.map(cat =>{
+            console.log(cat); 
+            return (<img src={cat.imageurl} className ="small cat images"/>)
+          }
+           
+          )}
+      </div>
       <div>
         {nextDog !== null && (
           <div className="dog container">
@@ -70,6 +80,15 @@ export default function Adoption(props) {
             </div>
           </div>
         )}
+      </div>
+      <div className="other dogs">
+      {dogList !== null &&
+          dogList.map(dog =>{
+            console.log(dog); 
+            return (<img src={dog.imageurl} className ="small dog images"/>)
+          }
+           
+          )}
       </div>
     </div>
   );
