@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import PetListContext from './PetListContext';
+import { PetListProvider } from './PetListContext';
 
 ReactDOM.render(
-<PetListContext>
+<PetListProvider>
     <App />
-</PetListContext>, document.getElementById('root'));
+</PetListProvider>, document.getElementById('root'));
