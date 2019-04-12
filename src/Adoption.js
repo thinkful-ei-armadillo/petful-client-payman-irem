@@ -13,10 +13,14 @@ export default function Adoption(props) {
     debugger;
     PetApiService.getCat()
       .then(res => {
-        setCatList(res.cats);
-        setNextCat(res.cats[0]);
         debugger;
-        console.log(res.cats[0]);
+        setCatList(res);
+        PetApiService.getNextCat()
+          .then(res => {
+            debugger;
+            setNextCat(res);
+          })
+          .catch(setError);
       })
       .catch(setError);
     /*PetApiService.getDog()

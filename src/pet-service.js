@@ -11,6 +11,16 @@ const PetApiService = {
       });
   },
 
+  getNextCat() {
+    return fetch(`${config.API_ENDPOINT}/cat/queue`)
+      .then(res =>
+        !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+      )
+      .then(res => {
+        return res;
+      });
+  },
+
   /*adoptCat(){
         return fetch(`${config.API_ENDPOINT}/cat`, {
           method: 'DELETE'
