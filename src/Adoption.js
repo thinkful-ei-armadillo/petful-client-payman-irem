@@ -26,7 +26,7 @@ export default function Adoption(props) {
         setDogList(res);
         PetApiService.getNextDog()
           .then(res => {
-            setNextDog();
+            setNextDog(res);
           })
           .catch(setError);
       })

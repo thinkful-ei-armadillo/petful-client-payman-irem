@@ -18,7 +18,7 @@ class App extends Component {
         <header className="App-header">
           {this.state.view === 'home' && (
             <React.Fragment>
-              <p>
+              <div>
                 <h1>
                   Adopt a FIFO pet; give an equal opportunity to a pet in
                   shelter!
@@ -36,7 +36,7 @@ class App extends Component {
                   animals If you'd like to start the process, get in queue, just
                   like our pets, so you can adopt when its your turn.
                 </p>
-              </p>
+              </div>
               <button onClick={this.changeView}>Start</button>
             </React.Fragment>
           )}
