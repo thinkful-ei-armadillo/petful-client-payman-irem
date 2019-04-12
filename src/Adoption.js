@@ -8,23 +8,34 @@ export default function Adoption(props) {
   const [catList, setCatList] = useState(null);
   const [dogList, setDogList] = useState(null);
   const [nextCat, setNextCat] = useState(null);
+  const [nextDog, setNextDog] = useState(null);
 
   useEffect(() => {
-    debugger;
     PetApiService.getCat()
       .then(res => {
-        setCatList(res.cats);
-        setNextCat(res.cats[0]);
-        debugger;
-        console.log(res.cats[0]);
+        setCatList(res);
+        PetApiService.getNextCat()
+          .then(res => {
+              setNextCat(res);
+          })
+          .catch(setError);
       })
       .catch(setError);
-    /*PetApiService.getDog()
-      .then(this.context.setDogList)
-      .catch(this.context.setError);*/
+      PetApiService.getDog()
+      .then(res => {
+        setDogList(res);
+        PetApiService.getNextDog()
+          .then(res =>{
+              setNextDog()
+          })
+          .catch(setError);
+      })
+      .catch(setError);
+   
   }, []);
 
   return (
+    <div className='pet-box'>
     <div>
       {nextCat !== null && (
         <div className="cat container">
@@ -32,32 +43,35 @@ export default function Adoption(props) {
           <div className="cat-box">
             <img
               src={nextCat.imageurl}
-              className="cat image"
+              className="pet image"
               alt="a close shot of the cat"
             />
-            <p>{nextCat.imagedescription}</p>
+            <p>{nextCat.story}</p>
           </div>
           <div className="button-box">
             <button type="button">Adopt Me!</button>
           </div>
         </div>
       )}
-      {/*<div className="dog container">
-        <h2>{dogList.name}</h2>
+    </div>
+    <div>
+    {nextDog !== null && (
+      <div className="dog container">
+        <h2>{nextDog.name}</h2>
         <div className="dog-box">
           <img
-            src={dogList.image}
-            className="cat-owner logo"
-            alt="a close shot of the dog"
+            src={nextDog.imageurl}
+            className="cat image"
+            alt="a close shot of the cat"
           />
-          <p>{dogList.description}</p>
+          <p>{nextDog.story}</p>
         </div>
         <div className="button-box">
-          <button type="button" onClick={this.handleClickAdoptButton}>
-            Adopt Me!
-          </button>
+          <button type="button">Adopt Me!</button>
         </div>
-  </div>*/}
-    </div>
+      </div>
+    )}
+  </div>
+  </div>
   );
 }

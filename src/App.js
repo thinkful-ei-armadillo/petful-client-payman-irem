@@ -8,7 +8,6 @@ class App extends Component {
   };
 
   changeView = () => {
-    debugger;
     if (this.state.view === 'home') {
       this.setState({ view: 'adoption' });
     }
@@ -20,6 +19,9 @@ class App extends Component {
           {this.state.view === 'home' && (
             <React.Fragment>
               <p>
+              <h1>
+              Adopt a FIFO pet; give an equal opportunity to a pet in shelter!
+              </h1>
                 <p>
                   Welcome to Adopt a Pet FIFO style page. We're an animal
                   shelter that allows adoption of cats and dogs only in the
