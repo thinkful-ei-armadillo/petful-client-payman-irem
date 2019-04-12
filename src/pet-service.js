@@ -21,16 +21,15 @@ const PetApiService = {
       });
   },
 
-  /*adoptCat(){
-        return fetch(`${config.API_ENDPOINT}/cat`, {
-          method: 'DELETE'
-        })
-          .then(res =>{
-            if(!res.ok)
-            throw new Error(res.status);
-          })
-          .catch(error => console.error({error}))
-      },*/
+  adoptCat() {
+    return fetch(`${config.API_ENDPOINT}/cat`, {
+      method: 'DELETE'
+    })
+      .then(res => {
+        if (!res.ok) throw new Error(res.status);
+      })
+      .catch(error => console.error({ error }));
+  },
 
   getDog() {
     return fetch(`${config.API_ENDPOINT}/dog`).then(res =>

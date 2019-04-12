@@ -7,8 +7,8 @@ export default function Adoption(props) {
   const [error, setError] = useState(null);
   const [catList, setCatList] = useState(null);
   const [dogList, setDogList] = useState(null);
-  const [nextCat, setNextCat] = useState(null);
-  const [nextDog, setNextDog] = useState(null);
+  const [nextCat, setNextCat] = useState(undefined);
+  const [nextDog, setNextDog] = useState(undefined);
 
   useEffect(() => {
     PetApiService.getCat()
@@ -33,10 +33,22 @@ export default function Adoption(props) {
       .catch(setError);
   }, []);
 
+  function adoptCat() {
+    debugger;
+    PetApiService.adoptCat().then(res => {
+      PetApiService.getNextCat()
+        .then(res => {
+          debugger;
+          setNextCat(res);
+        })
+        .catch(setError);
+    });
+  }
+
   return (
     <div className="pet-box">
       <div>
-        {nextCat !== null && (
+        {nextCat !== undefined && nextCat !== null && (
           <div className="cat container">
             <h2>{nextCat.name}</h2>
             <div className="cat-box">
@@ -48,10 +60,14 @@ export default function Adoption(props) {
               <p>{nextCat.story}</p>
             </div>
             <div className="button-box">
-              <button type="button">Adopt Me!</button>
+              <button onClick={adoptCat} type="button">
+                Adopt Me!
+              </button>
             </div>
           </div>
         )}
+        {nextCat === null && <p>All Cats Adopted</p>}
+        {nextCat === undefined && <p>Loading</p>}
       </div>
       <div>
         {nextDog !== null && (
