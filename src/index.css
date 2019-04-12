@@ -27,6 +27,12 @@ code {
   width: 10rem;
 }
 
+.small {
+  height: 3rem;
+  width: 3rem;
+  margin: 0.3rem;
+}
+
 button {
   background-color: grey;
 }
