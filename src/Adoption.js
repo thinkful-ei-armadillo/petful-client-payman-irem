@@ -46,6 +46,18 @@ export default function Adoption(props) {
     });
   }
 
+  function adoptDog() {
+    debugger;
+    PetApiService.adoptDog().then(res => {
+      PetApiService.getNextDog()
+        .then(res => {
+          debugger;
+          setNextDog(res);
+        })
+        .catch(setError);
+    });
+  }
+
   return (
     <div className="pet-box">
       <div>
@@ -78,7 +90,7 @@ export default function Adoption(props) {
           })}
       </div>
       <div>
-        {nextDog !== null && (
+        {nextDog !== undefined && nextDog !== null && (
           <div className="dog container">
             <h2>{nextDog.name}</h2>
             <div className="dog-box">
@@ -90,10 +102,12 @@ export default function Adoption(props) {
               <p>{nextDog.story}</p>
             </div>
             <div className="button-box">
-              <button type="button">Adopt Me!</button>
+              <button onClick={adoptDog} type="button">Adopt Me!</button>
             </div>
           </div>
         )}
+        {nextDog === null && <p>All Dogs Adopted</p>}
+        {nextDog === undefined && <p>Loading</p>}
       </div>
       <div className="other dogs">
         {dogList !== null &&

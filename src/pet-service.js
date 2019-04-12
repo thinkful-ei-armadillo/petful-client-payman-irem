@@ -45,9 +45,9 @@ const PetApiService = {
       .then(res => {
         return res;
       });
-  }
+  },
 
-  /*adoptDog(){
+  adoptDog(){
         return fetch(`${config.API_ENDPOINT}/dog`, {
           method: 'DELETE'
         })
@@ -56,7 +56,7 @@ const PetApiService = {
             throw new Error(res.status);
           })
           .catch(error => console.error({error}))
-      }*/
+      }
 };
 
 export default PetApiService;
