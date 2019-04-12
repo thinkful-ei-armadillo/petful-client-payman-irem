@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
 const PetListContext = React.createContext({
-  PetList: [],
+  catList: [],
+  dogList: [],
   error: null,
   setError: () => {},
   clearError: () => {},
@@ -16,17 +17,30 @@ export class PetListProvider extends Component {
     error: null,
   };
 
-  setPetList = petList => {
-    this.setState({ petList })
+  setCatList = catList => {
+    this.setState({ catList })
   }
 
-  clearPetList = () => {
-    this.setState({ petList: [] })
+  setDogList = dogList => {
+    this.setState({ dogList })
   }
 
-  removePet = pet => {
-    let newPetList = this.state.petList.filter(item => item.id !== pet.id)
-    this.setState({petList: newPetList})
+  clearcatList = () => {
+    this.setState({ catList: [] })
+  }
+
+  cleardogList = () => {
+    this.setState({ dogtList: [] })
+  }
+
+  removeCat = cat => {
+    let newCatList = this.state.catList.filter(item => item.id !== cat.id)
+    this.setState({petList: newCatList})
+  }
+
+  removeDog = dog => {
+    let newDogList = this.state.dogList.filter(item => item.id !== dog.id)
+    this.setState({petList: newDogList})
   }
 
 

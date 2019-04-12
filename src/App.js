@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Adoption from './Adoption';
 
 class App extends Component {
   render() {
@@ -9,6 +10,7 @@ class App extends Component {
           <p>
             Adopt a FIFO pet; give an equal opportunity to a pet in shelter!
           </p>
+          <Adoption />
         </header>
       </div>
     );
