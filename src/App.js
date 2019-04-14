@@ -31,7 +31,7 @@ class App extends Component {
                   The only rule is that we ask you to adopt the animal that came to our shelter first.
                   If you'd like to start the process, get in the queue, just like our pets, so you can adopt when its your turn.
                 </p>
-                <img className='dogque' src='http://www.nedmartin.org/v3/amused/_img/dog-queue.jpg' alt='dogs waiting in line'/>
+                <img className='dogq' src='http://www.nedmartin.org/v3/amused/_img/dog-queue.jpg' alt='dogs waiting in line'/>
               </div>
               <button onClick={this.changeView}>Start</button>
             </React.Fragment>
