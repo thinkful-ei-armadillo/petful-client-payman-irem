@@ -18,7 +18,6 @@ export class PetListProvider extends Component {
   };
 
   setCatList = catList => {
-    debugger;
     this.setState({ catList });
   };
 
