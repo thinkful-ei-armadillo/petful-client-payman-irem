@@ -85,7 +85,6 @@ export default function Adoption(props) {
       <div className="other cats">
         {catList !== null &&
           catList.map(cat => {
-            console.log(cat);
             return <img src={cat.imageurl} className="small cat images" />;
           })}
       </div>
@@ -112,7 +111,6 @@ export default function Adoption(props) {
       <div className="other dogs">
         {dogList !== null &&
           dogList.map(dog => {
-            console.log(dog);
             return <img src={dog.imageurl} className="small dog images" />;
           })}
       </div>

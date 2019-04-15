@@ -9,7 +9,7 @@ deployed link: https://payman-irem-petful-app.now.sh/
 https://github.com/thinkful-ei-armadillo/petful-client-payman-irem
 
 ### Server:
-deployed link: https://protected-everglades-91832.herokuapp.com/api
+deployed link: https://protected-everglades-91832.herokuapp.com
 
 https://github.com/thinkful-ei-armadillo/petful-server-payman-irem
 

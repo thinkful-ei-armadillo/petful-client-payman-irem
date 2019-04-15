@@ -47,12 +47,15 @@ button {
   font-size: 90% !important;
 }
 
-@media screen and (min-width: 1000px){
+@media screen and (min-width: 700px){
   body{
     width: 60%;
     height: 60%;
     margin: auto;
   } 
+  .dogq{
+    height: 32rem;
+  }
 } 
 
 @media screen and (min-width: 1100px){
@@ -61,4 +64,8 @@ button {
     height: 70%;
     margin: auto;
   } 
+
+  .dogq{
+    height: 32rem;
+  }
 } 
