@@ -35,11 +35,9 @@ export default function Adoption(props) {
   }, []);
 
   function adoptCat() {
-    debugger;
     PetApiService.adoptCat().then(res => {
       PetApiService.getNextCat()
         .then(res => {
-          debugger;
           setNextCat(res);
         })
         .catch(setError);
@@ -47,11 +45,9 @@ export default function Adoption(props) {
   }
 
   function adoptDog() {
-    debugger;
     PetApiService.adoptDog().then(res => {
       PetApiService.getNextDog()
         .then(res => {
-          debugger;
           setNextDog(res);
         })
         .catch(setError);
@@ -101,7 +97,9 @@ export default function Adoption(props) {
               <p>{nextDog.story}</p>
             </div>
             <div className="button-box">
-              <button onClick={adoptDog} type="button">Adopt Me!</button>
+              <button onClick={adoptDog} type="button">
+                Adopt Me!
+              </button>
             </div>
           </div>
         )}
